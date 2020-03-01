@@ -1,0 +1,26 @@
+syntax = "proto3";
+package foob.sysinternals.v1;
+
+option java_multiple_files = true;
+option java_outer_classname = "SysInternalsProto";
+option java_package = "com.foob.sysinternals.v1";
+
+import "google/protobuf/empty.proto";
+
+message Process {
+  int32 pid = 1;
+  map<string, string> systemProperties = 2;
+  map<string, string> environmentProperties = 3;
+  map<string, string> runtime = 4;
+}
+
+message Request { map<string, string> headers = 2; }
+
+message SysInternalsReply {
+  Process process = 1;
+  Request request = 2;
+}
+
+service SysInternals {
+  rpc Get(google.protobuf.Empty) returns (SysInternalsReply);
+}
