@@ -3,6 +3,7 @@ package(default_visibility = ["//visibility:public"])
 load("@rules_proto_grpc//java:java_proto_library.bzl", "java_proto_library")
 load("@rules_proto_grpc//java:java_grpc_library.bzl", "java_grpc_library")
 load("@rules_proto_grpc//github.com/grpc/grpc-web:defs.bzl", "ts_grpc_compile", "commonjs_grpc_compile")
+load("@rules_proto_grpc//nodejs:defs.bzl", "nodejs_proto_compile")
 
 proto_library(
     name = "sysinternals_proto",
@@ -24,9 +25,8 @@ ts_grpc_compile(
     deps = [":sysinternals_proto"],
 )
 
-commonjs_grpc_compile(
+nodejs_proto_compile(
     name = "sysinternals_js_proto",
     deps = [":sysinternals_proto"],
-    verbose=1
 )
 

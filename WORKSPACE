@@ -28,6 +28,8 @@ grpc_java_repositories(
     omit_net_zlib = True,
 )
 
+load("@rules_proto_grpc//nodejs:repositories.bzl", rules_proto_grpc_nodejs_repos="nodejs_repos")
+rules_proto_grpc_nodejs_repos()
 
 load("@rules_proto_grpc//github.com/grpc/grpc-web:repositories.bzl", rules_proto_grpc_grpc_web_repos="grpc_web_repos")
 rules_proto_grpc_grpc_web_repos()
